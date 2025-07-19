@@ -9,7 +9,10 @@ const bookmarkRoutes = require('./routes/bookmarks');
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: process.env.CLIENT_URL,
+  credentials: true
+}));
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
